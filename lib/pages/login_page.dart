@@ -147,6 +147,10 @@ class _LoginPageState extends State<LoginPage> {
                                 ? () {
                                     final name = _nameCtrl.text.trim();
                                     final phone = _phoneCtrl.text.trim();
+                                    Navigator.pushReplacementNamed(
+                                      context,
+                                      '/home',
+                                    );
                                   }
                                 : null,
                             style: ButtonStyle(
@@ -263,6 +267,7 @@ class _LoginPageState extends State<LoginPage> {
                                   color: Colors.white,
                                 ),
                               ),
+                              const SizedBox(width: 8),
                               const Icon(
                                 Icons.arrow_forward_ios,
                                 color: Colors.white,
@@ -287,7 +292,6 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           child: Center(
                             child: Row(
-                              spacing: 2,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
@@ -297,12 +301,13 @@ class _LoginPageState extends State<LoginPage> {
                                     color: Colors.white,
                                   ),
                                 ),
+                                const SizedBox(width: 6),
                                 Text(
                                   '!',
                                   textAlign: TextAlign.right,
                                   style: bodyoneBold.copyWith(
                                     color: Colors.white,
-                                    fontSize: 50,
+                                    fontSize: 40,
                                   ),
                                 ),
                               ],

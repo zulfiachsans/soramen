@@ -4,8 +4,18 @@ import 'package:google_fonts/google_fonts.dart';
 double edge = 24.0;
 
 const Color primaryColor = Color(0xff97FA01);
+const Color secondaryColor = Color(0xff8ADD0C);
 const Color redColor = Color(0xffFF5E5E);
 const Color greyColor = Color(0xff726B6B);
+const Color yellowColor = Color(0xffF4E34E);
+const Color purpleColor = Color(0xffE0ABE0);
+const Color orangeColor = Color(0xffF1AA45);
+const Color chocolateColor = Color(0xffD2A679);
+const Color smoothieColor = Color(0xffA3D8F4);
+const Color vegieColor = Color(0xffA8E6A1);
+const Color iceCreamColor = Color(0xffF4C2C2);
+const Color cheeseColor = Color(0xffFFF5BA);
+const Color lemonadeColor = Color(0xffFFFACD);
 
 // Text Style
 TextStyle bodySplash = GoogleFonts.kanit(
