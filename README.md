@@ -1,16 +1,65 @@
-# test_fe_sora
+# **Soramen**
 
-A new Flutter project.
+## 📌 Deskripsi Singkat  
+Soramen adalah aplikasi **front-end mobile** hasil slicing dari desain Figma.  
+Seluruh tampilan dibuat berdasarkan referensi desain, meskipun terdapat beberapa perbedaan minor dari versi Figmanya.  
+Aplikasi ini sepenuhnya dibuat **secara mandiri tanpa bantuan pihak lain**.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ⭐ Fitur Utama  
+- Tampilan UI mobile hasil slicing Figma  
+- Navigasi halaman sederhana  
+- Responsive layout  
+- Struktur kode bersih dan mudah dikembangkan
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🎨 Slicing dari Figma  
+Aplikasi ini dikembangkan dengan mengikuti desain dari Figma.  
+Beberapa elemen UI mungkin terdapat perbedaan karena penyesuaian teknis atau kebutuhan layout.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## ⚠️ Catatan Ketidaksesuaian dengan Figma  
+- Beberapa ukuran spacing tidak 100% sama  
+- Penyesuaian layout untuk menghindari overflow  
+- Beberapa font/warna mengalami sedikit perubahan agar cocok di Flutter
+
+---
+
+## 👨‍💻 Pengembang  
+Dikembangkan oleh **Zulfi Achsan Sani**  
+> Aplikasi ini dibuat **sendiri tanpa ada bantuan**.
+
+---
+
+## 🚀 Teknologi yang Digunakan  
+- **Flutter 3.35.7 (versi terbaru)**  
+- **Dart (versi terbaru)**  
+
+---
+
+## 📁 Struktur Folder  
+lib/
+├── pages/
+│ ├── splash_page.dart
+│ ├── login_page.dart
+│ └── home_page.dart
+├── widgets/
+└── main.dart
+
+assets/
+├── images/
+└── logo/
+
+
+---
+
+## 📦 Cara Menjalankan Proyek  
+```bash
+flutter pub get
+flutter run
+```
+
+File APK [APK SORAMEN](https://drive.google.com/file/d/17eToZsz9dPeiD-h4HglAKvhiO6ZwqdP1/view?usp=sharing)
