@@ -5,6 +5,8 @@ import 'package:test_fe_sora/models/sora.dart';
 import 'package:test_fe_sora/utils/utils.dart';
 import 'package:test_fe_sora/widgets/category_item.dart';
 import 'package:test_fe_sora/widgets/header_category.dart';
+import 'package:test_fe_sora/models/cart.dart';
+import 'package:test_fe_sora/pages/receipt_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -118,6 +120,76 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      // floating shopping button
+      floatingActionButton: ValueListenableBuilder<int>(
+        valueListenable: Cart.instance.count,
+        builder: (context, value, _) {
+          if (value <= 0) return const SizedBox.shrink();
+          final first = Cart.instance.firstItem();
+          return FloatingActionButton(
+            backgroundColor: secondaryColor,
+            onPressed: () {
+              // navigate to receipt using first cart item as source
+              if (first == null) return;
+              final sora = first['sora'] as dynamic;
+              final variant = first['variant'] as String?;
+              final variantPrice = first['variantPrice'] as int? ?? 0;
+              final packagingPrice = first['packagingPrice'] as int? ?? 0;
+              final packagingLabel = first['packagingLabel'] as String?;
+              final quantity = first['quantity'] as int? ?? 1;
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => ReceiptPage(
+                    sora: sora,
+                    selectedVariant: variant,
+                    basePrice:
+                        int.tryParse(
+                          (sora?.price ?? '0').toString().replaceAll('.', ''),
+                        ) ??
+                        0,
+                    variantPrice: variantPrice,
+                    packagingPrice: packagingPrice,
+                    packagingLabel: packagingLabel,
+                    quantity: quantity,
+                    itemName: sora?.name,
+                  ),
+                ),
+              );
+            },
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                const Center(
+                  child: Icon(Icons.shopping_bag_outlined, color: Colors.white),
+                ),
+                Positioned(
+                  right: -6,
+                  top: -6,
+                  child: Container(
+                    width: 22,
+                    height: 22,
+                    decoration: BoxDecoration(
+                      color: Colors.redAccent,
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 2),
+                    ),
+                    child: Center(
+                      child: Text(
+                        '$value',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
       body: SafeArea(
         child: Stack(
           children: [
