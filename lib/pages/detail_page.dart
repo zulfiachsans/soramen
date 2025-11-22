@@ -120,20 +120,26 @@ class _DetailPageState extends State<DetailPage> {
                         right: 0,
                         top: 0,
                         child: Center(
-                          child: Container(
-                            width: MediaQuery.of(context).size.width / 1.2,
-                            height: MediaQuery.of(context).size.width / 1.2,
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.0),
-                            ),
-                            child: Image.asset(
-                              sora.imageUrl ?? '',
-                              fit: BoxFit.cover,
-                              errorBuilder: (_, __, ___) => Icon(
-                                Icons.broken_image,
-                                size: 80,
-                                color: Colors.white.withOpacity(0.8),
+                          child: Hero(
+                            tag: 'sora-image-${sora.name}',
+                            child: Container(
+                              width: MediaQuery.of(context).size.width / 1.2,
+                              height: MediaQuery.of(context).size.width / 1.2,
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.0),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: Image.asset(
+                                  sora.imageUrl ?? '',
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (_, __, ___) => Icon(
+                                    Icons.broken_image,
+                                    size: 80,
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
+                                ),
                               ),
                             ),
                           ),

@@ -327,7 +327,7 @@ class _DetailOrderState extends State<DetailOrder> {
                                 elevation: 0,
                                 child: SizedBox(
                                   width: double.infinity,
-                                  height: 140,
+                                  height: 138,
                                   child: Stack(
                                     alignment: Alignment.center,
                                     children: [
@@ -339,7 +339,7 @@ class _DetailOrderState extends State<DetailOrder> {
                                               MediaQuery.of(
                                                 context,
                                               ).size.width *
-                                              0.8,
+                                              0.75,
                                           padding: const EdgeInsets.symmetric(
                                             horizontal: 16,
                                             vertical: 12,
@@ -360,28 +360,27 @@ class _DetailOrderState extends State<DetailOrder> {
                                             ],
                                           ),
                                           child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
-                                              const SizedBox(width: 68),
-                                              Expanded(
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    Text(
-                                                      'Item berhasil ditambahkan',
-                                                      style: bodyoneSemibold,
-                                                    ),
-                                                    const SizedBox(height: 6),
-                                                    Text(
-                                                      variantTitle ??
-                                                          (sora.name ?? ''),
-                                                      style: bodyfourRegular,
-                                                    ),
-                                                  ],
-                                                ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Text(
+                                                    'Item berhasil ditambahkan',
+                                                    style: bodyoneSemibold
+                                                        .copyWith(fontSize: 16),
+                                                  ),
+                                                  const SizedBox(height: 6),
+                                                  Text(
+                                                    variantTitle ??
+                                                        (sora.name ?? ''),
+                                                    style: bodyfourRegular,
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           ),
@@ -447,24 +446,27 @@ class _DetailOrderState extends State<DetailOrder> {
                           );
 
                           // after a short delay, add to cart, dismiss popup and return to Home
-                          Future.delayed(const Duration(milliseconds: 700), () {
-                            // add item to shared cart
-                            Cart.instance.addItem(
-                              sora: sora,
-                              variant: variantTitle,
-                              variantPrice: variantPrice,
-                              packagingPrice: packaging,
-                              packagingLabel: packagingLabel,
-                              quantity: 1,
-                            );
+                          Future.delayed(
+                            const Duration(milliseconds: 2000),
+                            () {
+                              // add item to shared cart
+                              Cart.instance.addItem(
+                                sora: sora,
+                                variant: variantTitle,
+                                variantPrice: variantPrice,
+                                packagingPrice: packaging,
+                                packagingLabel: packagingLabel,
+                                quantity: 1,
+                              );
 
-                            // dismiss dialog
-                            if (Navigator.of(context).canPop())
-                              Navigator.of(context).pop();
+                              // dismiss dialog
+                              if (Navigator.of(context).canPop())
+                                Navigator.of(context).pop();
 
-                            // pop back to the first route (home)
-                            Navigator.of(context).popUntil((r) => r.isFirst);
-                          });
+                              // pop back to the first route (home)
+                              Navigator.of(context).popUntil((r) => r.isFirst);
+                            },
+                          );
                         },
                         height: 56,
                       ),

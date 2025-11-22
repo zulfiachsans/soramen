@@ -14,9 +14,18 @@ class CategoryItem extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
         onTap: () {
-          Navigator.of(
-            context,
-          ).push(MaterialPageRoute(builder: (_) => DetailPage(sora: sora)));
+          Navigator.of(context).push(
+            PageRouteBuilder(
+              transitionDuration: const Duration(milliseconds: 600),
+              reverseTransitionDuration: const Duration(milliseconds: 600),
+              pageBuilder: (context, animation, secondaryAnimation) =>
+                  DetailPage(sora: sora),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                // No additional transition here; Hero will animate over the route duration.
+                return child;
+              },
+            ),
+          );
         },
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -60,13 +69,19 @@ class CategoryItem extends StatelessWidget {
                   color: sora.color ?? Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Image.asset(
-                  sora.imageUrl ?? '',
-                  fit: BoxFit.contain,
-                  errorBuilder: (_, __, ___) => Icon(
-                    Icons.broken_image,
-                    size: 40,
-                    color: Colors.grey.shade500,
+                child: Hero(
+                  tag: 'sora-image-${sora.name}',
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      sora.imageUrl ?? '',
+                      fit: BoxFit.contain,
+                      errorBuilder: (_, __, ___) => Icon(
+                        Icons.broken_image,
+                        size: 40,
+                        color: Colors.grey.shade500,
+                      ),
+                    ),
                   ),
                 ),
               ),

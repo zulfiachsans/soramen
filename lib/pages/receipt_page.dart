@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_fe_sora/models/sora.dart';
+import 'package:test_fe_sora/pages/success_payment.dart';
 import 'package:test_fe_sora/utils/utils.dart';
 import 'package:test_fe_sora/models/cart.dart';
 
@@ -204,7 +205,7 @@ class _ReceiptPageState extends State<ReceiptPage> {
     final total = pembulatan;
 
     return Scaffold(
-      backgroundColor: widget.sora.color ?? Colors.grey.shade300,
+      backgroundColor: Colors.grey.shade300,
       body: Stack(
         children: [
           Padding(
@@ -297,11 +298,13 @@ class _ReceiptPageState extends State<ReceiptPage> {
 
                 Expanded(
                   child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40),
+                      ),
                     ),
                     child: Column(
                       children: [
@@ -517,7 +520,14 @@ class _ReceiptPageState extends State<ReceiptPage> {
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (_) =>
+                                          SuccessPayment(total: total),
+                                    ),
+                                  );
+                                },
                                 child: Text(
                                   'Bayar',
                                   style: bodyoneBold.copyWith(
